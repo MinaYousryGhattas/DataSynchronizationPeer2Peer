@@ -35,7 +35,15 @@ public class NetworkConfig extends Thread {
         port=1234;
         buf = new byte[256];
     }
+    //////////////////////////////////////////////
 
+    public String getAddressname() {
+        return addressname;
+    }
+
+    public void setAddressname(String addressname) {
+        this.addressname = addressname;
+    }
 
     //////////////////////////////////////////////
         

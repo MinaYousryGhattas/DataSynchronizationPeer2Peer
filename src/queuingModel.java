@@ -8,10 +8,15 @@ import java.util.Scanner;
 
 public class queuingModel {
     private Queue<String> queue = new LinkedList<>();
-    File file = new File("data.txt");
+    private  File file = new File("data.txt");
+    mainScreenGUI gui;
 
     public queuingModel(){
 
+    }
+
+    public queuingModel(mainScreenGUI gui){
+        this.gui = gui;
     }
 
     public queuingModel(Queue<String> queue) {
@@ -24,6 +29,10 @@ public class queuingModel {
 
     public void setQueue(Queue<String> queue) {
         this.queue = queue;
+    }
+
+    public int getSize() {
+        return queue.size();
     }
 
     public void addToQueue(String element){
@@ -64,7 +73,9 @@ public class queuingModel {
         }
 
         while (scanner.hasNext()){
+            // testing only
             System.out.println(scanner.nextLine());
+            gui.write(scanner.nextLine());
         }
     }
 }
