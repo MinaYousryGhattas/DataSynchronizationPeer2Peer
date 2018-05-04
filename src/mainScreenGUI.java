@@ -29,6 +29,10 @@ public class mainScreenGUI extends JFrame  {
         getContentPane().add(PortNumber);
         getContentPane().add(scroll);
 
+        Timer timer = new Timer(1000 ,new fileAction()); // Execute task each 1000 mileSeconds
+        timer.setRepeats(true);
+        timer.start();
+        
         //getContentPane().setBackground(Color.GRAY);
     }
 
