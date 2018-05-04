@@ -33,10 +33,10 @@ public class mainScreenGUI extends JFrame  {
     }
 
 
-    InitializeNetwork initializeNetwork = new InitializeNetwork("192.168.43.34" , this);
+    InitializeNetwork initializeNetwork = new InitializeNetwork("192.168.1.5" , this);
     ListenerManager listenerManager = new ListenerManager(1234 , this);
     NetworkConfig netConfig=new NetworkConfig("0");
-
+    WordGenerator generate=new WordGenerator();
 
     public void write(String s) {
         Chat.append(s + "\n");
@@ -53,6 +53,7 @@ public class mainScreenGUI extends JFrame  {
                 initializeNetwork.start();
                 listenerManager.start();
                 netConfig.start();
+                generate.start();
             }
         }
     }
