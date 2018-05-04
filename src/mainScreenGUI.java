@@ -10,7 +10,7 @@ public class mainScreenGUI extends JFrame  {
     JButton ConnectToNetwork = new JButton("Connect To Network");
 
     // listener information
-    JTextField ipAddress=new JTextField("192.168.43.34",50);
+    JTextField ipAddress=new JTextField("192.168.1.5",50);
     JTextField PortNumber =new JTextField("1234" , 50);
 
     JTextArea Chat = new JTextArea(10 , 50);
@@ -33,7 +33,7 @@ public class mainScreenGUI extends JFrame  {
     }
 
 
-    InitializeNetwork initializeNetwork = new InitializeNetwork("192.168.1.5" , this);
+    InitializeNetwork initializeNetwork = new InitializeNetwork(ipAddress.getText(), this);
     ListenerManager listenerManager = new ListenerManager(1234 , this);
     NetworkConfig netConfig=new NetworkConfig("0");
     WordGenerator generate=new WordGenerator();
@@ -49,12 +49,30 @@ public class mainScreenGUI extends JFrame  {
             Object buttonPressed=e.getSource();
 
             if(buttonPressed.equals(ConnectToNetwork)){
+                // if user change the default values !!
+                listenerManager.setPort(Integer.parseInt(PortNumber.getText()));
+                initializeNetwork.setAddressname(ipAddress.getText());
 
                 initializeNetwork.start();
                 listenerManager.start();
                 netConfig.start();
                 generate.start();
             }
+
+            // Refresh to see new messages
+            if (buttonPressed.equals(Refresh)){
+                Chat.setText("");
+                queuingModel.loadFromFile();
+            }
+        }
+    }
+    private class fileAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Chat.setText("");
+            queuingModel.loadFromFile();
+
         }
     }
 }
