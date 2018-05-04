@@ -18,6 +18,7 @@ public class publisher extends Thread{
 	}
 	
 	public void run() {
+
 		for (int i = 0; i < 50; i++) {
 			Socket s = null;
 			try {
@@ -36,7 +37,6 @@ public class publisher extends Thread{
 			try {
 
 				dout.writeUTF(g.generateData());
-				System.out.println("tt");
 				dout.flush();
 				dout.close();
 				s.close();

@@ -31,11 +31,19 @@ public class NetworkConfig extends Thread {
         socket=null;
         IPs=new Vector<String>();
         addressname = "239.255.255.250";
-        IPs.add(ip);
+       // IPs.add(ip);
         port=1234;
         buf = new byte[256];
     }
+    //////////////////////////////////////////////
 
+    public String getAddressname() {
+        return addressname;
+    }
+
+    public void setAddressname(String addressname) {
+        this.addressname = addressname;
+    }
 
     //////////////////////////////////////////////
         
@@ -47,7 +55,7 @@ public class NetworkConfig extends Thread {
         }
         try {
             socket = new MulticastSocket(port);
-            socket.setLoopbackMode(true);
+          //  socket.setLoopbackMode(true);
         } catch (IOException e) {
             e.printStackTrace();
         }

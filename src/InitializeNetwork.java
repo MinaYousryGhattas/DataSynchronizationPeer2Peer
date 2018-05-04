@@ -12,9 +12,7 @@ public class InitializeNetwork extends Thread {
     private InetAddress group;
     private int port = 1234;
     private mainScreenGUI gui;
-
-
-//    private mainScreenGUI mainScreenGUI;
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     InitializeNetwork(String ip) throws IOException {
         socket = new MulticastSocket();
@@ -34,6 +32,17 @@ public class InitializeNetwork extends Thread {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public String getAddressname() {
+        return addressname;
+    }
+
+    public void setAddressname(String addressname) {
+        this.addressname = addressname;
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public void run(){
         while (true) {
             byte[] buf = new byte[256];
@@ -46,7 +55,7 @@ public class InitializeNetwork extends Thread {
             try {
                 socket.send(packet);
                 System.out.println("Sent my Ip Address : " + dString);
-                //mainScreenGUI.write("Sent my Ip Address : ");
+//                if(gui != null ){gui.write("Sent my Ip Address : ");}
 //                socket.close();
             } catch (IOException e) {
                 e.printStackTrace();
