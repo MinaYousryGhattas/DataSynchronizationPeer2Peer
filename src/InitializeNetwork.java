@@ -55,7 +55,7 @@ public class InitializeNetwork extends Thread {
             try {
                 socket.send(packet);
                 System.out.println("Sent my Ip Address : " + dString);
-                //mainScreenGUI.write("Sent my Ip Address : ");
+//                if(gui != null ){gui.write("Sent my Ip Address : ");}
 //                socket.close();
             } catch (IOException e) {
                 e.printStackTrace();

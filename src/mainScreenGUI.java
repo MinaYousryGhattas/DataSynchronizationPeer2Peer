@@ -9,15 +9,15 @@ import static java.lang.Thread.sleep;
 
 public class mainScreenGUI extends JFrame  {
 
+    Timer timer;
+
     JButton ConnectToNetwork = new JButton("Connect To Network");
     JButton Refresh = new JButton("Refresh");
 
-    // listener information
-    JTextField ipAddressMC=new JTextField("239.255.255.250",50);
-    JTextField ipAddress=new JTextField("192.168.43.34",50);
+    JTextField ipAddress=new JTextField("192.168.1.3",50);
     JTextField PortNumber =new JTextField("1234" , 50);
 
-    JTextArea Chat = new JTextArea(10 , 50);
+    JTextArea Chat = new JTextArea(20 , 50);
     JScrollPane scroll = new JScrollPane(Chat);
 
     public mainScreenGUI() throws IOException {
@@ -34,6 +34,11 @@ public class mainScreenGUI extends JFrame  {
         getContentPane().add(PortNumber);
         getContentPane().add(Refresh);
         getContentPane().add(scroll);
+
+
+        Timer timer = new Timer(1000 ,new fileAction()); // Execute task each 1000 mileSeconds
+        timer.setRepeats(true);
+        timer.start();
 
         //getContentPane().setBackground(Color.GRAY);
     }
@@ -52,6 +57,7 @@ public class mainScreenGUI extends JFrame  {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+
             Object buttonPressed=e.getSource();
 
             if(buttonPressed.equals(ConnectToNetwork)){
@@ -70,6 +76,15 @@ public class mainScreenGUI extends JFrame  {
                 Chat.setText("");
                 queuingModel.loadFromFile();
             }
+
+        }
+    }
+    private class fileAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Chat.setText("");
+            queuingModel.loadFromFile();
 
         }
     }

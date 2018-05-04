@@ -19,6 +19,11 @@ public class ListenerManager extends Thread {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    ListenerManager(int port ) throws IOException {
+        this.port = port;
+        this.serverSocket = new ServerSocket(port);
+    }
+
     ListenerManager(int port , mainScreenGUI gui) throws IOException {
         this.port = port;
         this.serverSocket = new ServerSocket(port);
@@ -30,8 +35,8 @@ public class ListenerManager extends Thread {
 
     public void run(){
         boolean moreQuote = true;
-        //System.out.println("Listener is running");
-        gui.write("Listener is running");
+        System.out.println("Listener is running");
+       // if(gui != null){  gui.write("Listener is running"); }
         Socket s= null;
         while (moreQuote) {
             try {
@@ -41,8 +46,7 @@ public class ListenerManager extends Thread {
 
                 // for testing only !
                 System.out.println("accepting socket");
-
-                gui.write("accepting socket");
+                //if(gui != null){ gui.write("accepting socket"); }
 
             } catch (IOException e) {
                 e.printStackTrace();

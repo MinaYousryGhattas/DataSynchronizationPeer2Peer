@@ -74,8 +74,8 @@ public class queuingModel {
 
         while (scanner.hasNext()){
             // testing only
-            System.out.println(scanner.nextLine());
-            gui.write(scanner.nextLine());
+            // System.out.println(scanner.nextLine());
+             gui.write(scanner.nextLine());
         }
     }
 }
